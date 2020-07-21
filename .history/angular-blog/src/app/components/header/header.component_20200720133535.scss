@@ -1,0 +1,9 @@
+.login{
+    background: red;
+    &:after{
+        content: "";
+        width: auto;
+        height: 0;
+        border: 1px solid black;
+    }
+}

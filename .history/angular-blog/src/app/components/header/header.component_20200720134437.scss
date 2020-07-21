@@ -1,0 +1,17 @@
+.login {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 1px solid black;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}

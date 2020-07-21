@@ -1,0 +1,27 @@
+<div class="form-container">
+    <h2>Register</h2>
+    <div>
+        <div class="form-input">
+            <label for="name">Name</label>
+            <div class="input-container">
+                <input id="name" type="text" required pattern=".*\S.*" [(ngModel)]="userToRegister.name">
+            </div>
+        </div>
+        <div class="form-input">
+            <label for="email">Email</label>
+            <div class="input-container">
+                <input id="email" type="email" #email="ngModel" required [(ngModel)]="userToRegister.email">
+                <small *ngIf="!email.valid && email.touched">Email is invalid</small>
+            </div>
+        </div>
+        <div class="form-input">
+            <label for="password">Password</label>
+            <div class="input-container">
+                <input id="password" type="password" required [(ngModel)]="userToRegister.password">
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn mx-5" (click)="onUserSubmit()">
+        <i class="fa fa-paper-plane"></i>
+    </button>
+</div>

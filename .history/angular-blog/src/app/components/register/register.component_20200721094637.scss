@@ -1,0 +1,26 @@
+@import 'src/styles';
+
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    h2{
+        text-align: center;
+        &:after{
+            content: "";
+            border: 1px solid $dark-gray;
+        }
+    }
+    div{
+        padding:1rem;
+        .form-input{
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            label{
+                margin: auto 1rem auto 0;
+            }
+        }
+    }
+}

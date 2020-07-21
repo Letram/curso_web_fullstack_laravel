@@ -1,0 +1,8 @@
+.login{
+    background: red;
+    &:after{
+        content: "";
+        width: auto;
+        border: 1px solid black;
+    }
+}
