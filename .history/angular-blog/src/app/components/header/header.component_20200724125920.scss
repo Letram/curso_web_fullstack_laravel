@@ -1,0 +1,31 @@
+@import 'src/styles';
+
+.navbar-action {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    border: 1px solid $green;
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+.avatar-container{
+  height: 3rem;
+  width: 3rem;
+  img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    border: 3px solid $dark-gray;
+    border-radius: 50%;
+  }
+}

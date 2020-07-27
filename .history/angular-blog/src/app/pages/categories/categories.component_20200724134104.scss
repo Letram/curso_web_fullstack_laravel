@@ -1,0 +1,21 @@
+@import "src/styles.scss";
+
+.cat-card {
+  height: 4rem;
+  margin: 0.25rem auto;
+  border: 3px solid $dark-gray;
+  padding: 1rem;
+  transition: border-color 0.5s ease-in-out, border-radius 0.25s ease-in-out,
+    background-color 0.5s ease-in-out;
+  cursor: pointer;
+  .cat-name {
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+  }
+  &:hover {
+    border-radius: 4rem;
+    border-color: $dark-yellow;
+    background-color: $yellow;
+  }
+}

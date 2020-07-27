@@ -1,0 +1,85 @@
+@import "src/styles.scss";
+
+.cat-card {
+  height: 5rem;
+  width: 80%;
+  margin: 0.25rem auto;
+  border: 3px solid $dark-gray;
+  padding: 1rem 0.5rem;
+  display: flex;
+
+  transition: border-color 0.5s ease-in-out, border-radius 0.25s ease-in-out,
+    background-color 0.5s ease-in-out;
+  .cat-name {
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+  }
+  .cat-post-count{
+    font-weight: lighter;
+    font-size: 0.75rem;
+  }
+  .btn-container{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .action-btn{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .red{
+        height: 2rem;
+        width: 2rem;
+        color: $dark-red;
+        border: 3px solid $dark-red;
+        border-radius: 50%;
+        transition: background-color 0.5s ease-in-out;
+        &:hover{
+            background-color: lighten($color: $red, $amount: 10);
+            cursor: pointer;
+        }
+    }
+    .green{
+        height: 2rem;
+        width: 2rem;
+        color: $dark-green;
+        border: 3px solid $dark-green;
+        border-radius: 50%;
+
+        transition: background-color 0.5s ease-in-out;
+        i{
+            text-align: center;
+        }
+        &:hover{
+            background-color: lighten($color: $green, $amount: 10);
+            cursor: pointer;
+        }
+    }
+  }
+  &:hover {
+    border-radius: 4rem;
+    border-color: $dark-yellow;
+    background-color: $yellow;
+  }
+}
+
+.cat-count {
+  p {
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.cat-input{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+.btn-cat-new{
+  border: 3px solid $dark-green;
+  background-color: $green;
+}

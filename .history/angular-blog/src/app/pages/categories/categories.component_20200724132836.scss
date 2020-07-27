@@ -1,0 +1,13 @@
+@import 'src/styles.scss';
+
+.cat-card{
+    height: 4rem;
+    width: 80%;
+    margin: 0.25rem auto;
+    border: 3px solid $dark-gray;
+    padding: 1rem;
+    .cat-name{
+        padding: 0;
+        margin: 0;
+    }
+}

@@ -13,6 +13,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { UserImagePipe } from './pipes/user-image.pipe';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { CategoryEntryComponent } from './components/category-entry/category-entry.component';
+import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { PostImagePipe } from './pipes/post-image.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { ErrorComponent } from './pages/error/error.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    EditUserComponent,
+    UserImagePipe,
+    CategoriesComponent,
+    CategoryEntryComponent,
+    CreatePostComponent,
+    PostImagePipe
   ],
   imports: [
     BrowserModule,

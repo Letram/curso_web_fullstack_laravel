@@ -1,0 +1,17 @@
+@import "src/styles";
+
+.user-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        max-width: 75%;
+        object-fit: cover;
+        height: auto;
+    }
+}
+.user-personal{
+    input{
+        display: block;
+    }
+}

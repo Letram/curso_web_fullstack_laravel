@@ -1,0 +1,70 @@
+<div class="py-2 row">
+  <div class="col-2 user-avatar">
+    <img [src]="userImage_url | userImage" alt="" />
+  </div>
+  <div class="col-10 user-personal">
+    <div class="col-4 user-data user-name">
+      <label for="name">Username</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        [ngClass]="{
+          valid: name.touched && name.valid,
+          invalid: name.touched && !name.valid
+        }"
+        #name="ngModel"
+        [(ngModel)]="userName"
+        required
+      />
+    </div>
+    <div class="col-4 user-data user-email">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        [ngClass]="{
+          valid: email.touched && email.valid,
+          invalid: email.touched && !email.valid
+        }"
+        #email="ngModel"
+        [(ngModel)]="userEmail"
+        required
+      />
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="offset-2 col-8 user-description">
+    <label for="description">Description</label>
+    <textarea
+      name="description"
+      id="description"
+      cols="100"
+      rows="10"
+      #description="ngModel"
+      [(ngModel)]="userDescription"
+      >{{ userDescription }}</textarea
+    >
+  </div>
+</div>
+<button
+  type="button"
+  class="btn user-update-btn"
+  (click)="editUser()"
+  [disabled]="
+    !name.valid ||
+    !email.valid ||
+    (userName == identifiedUser.name &&
+      userEmail == identifiedUser.email &&
+      userDescription == identifiedUser.description)
+  "
+>
+  Save changes
+</button>
+<div class="row">
+  <div class="col">
+    publicaciones
+  </div>
+</div>

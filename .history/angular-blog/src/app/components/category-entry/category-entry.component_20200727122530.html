@@ -1,0 +1,25 @@
+<div class="cat-card">
+  <div class="cat-info" *ngIf="category">
+    <input
+      class="cat-name"
+      [ngClass]="{
+          'enabled': editing
+      }"
+      type="text"
+      #categoryName="ngModel"
+      [(ngModel)]="modifiedCategory.name"
+      name="categoryName"
+      [readonly]="editing"
+      required
+    />
+    <p class="cat-post-count">{{ category.count }} posts</p>
+  </div>
+  <div class="ml-auto btn-container" *ngIf="category">
+    <span class="action-btn blue"
+      ><i class="fa fa-edit" (click)="updateCategory()"></i
+    ></span>
+    <span class="action-btn red"
+      ><i class="fa fa-times" (click)="removeCategory()"></i
+    ></span>
+  </div>
+</div>

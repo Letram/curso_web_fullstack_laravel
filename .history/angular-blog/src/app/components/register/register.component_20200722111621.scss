@@ -1,0 +1,70 @@
+@import "src/styles";
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  flex-flow: column;
+  h2 {
+    text-align: center;
+    position: relative;
+    &:after {
+      content: "";
+      border: 1px solid $dark-gray;
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 100%;
+    }
+  }
+  div {
+    padding: 1rem;
+    .form-input {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      label {
+        margin: auto 1rem auto 0.5rem;
+      }
+      .input-container {
+        padding: 0;
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        small{
+          color: $red;
+        }
+        input {
+            border: none;
+          border-bottom: 3px solid $dark-gray;
+          outline: none;
+          transition: border 0.5s ease-in;
+            &:focus, &:valid{
+                border-bottom: 3px solid $green;
+            }
+            &:invalid{
+                border-bottom: 3px solid $red;
+            }
+        }
+      }
+    }
+  }
+  .btn {
+    background: $green;
+    color: $white;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+  }
+}
+
+.alert-green{
+  background-color: $green;
+  border: 3px solid $dark-green;
+}
+
+.alert-red{
+  background-color: $red;
+  border: 3px solid $dark-red;
+}

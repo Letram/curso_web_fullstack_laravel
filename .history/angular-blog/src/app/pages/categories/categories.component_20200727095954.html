@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-2 cat-count">
+    <p>{{ categories.length }} Categories</p>
+  </div>
+  <div class="col-6">
+    <div *ngFor="let category of categories" class="cat-card">
+      <div>
+        <p class="cat-name">{{ category.name }}</p>
+        <p class="cat-post-count">{{ category.count }} posts</p>
+      </div>
+      <div class="ml-auto btn-container">
+        <span class="action-btn red"><i class="fa fa-times"></i></span>
+        <span class="action-btn green"><i class="fa fa-edit"></i></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="d-flex justify-content-center align-items-center">
+      <h3>Create category</h3>
+      <input type="text" name="categoryName" id="categoryName" />
+    </div>
+  </div>
+</div>

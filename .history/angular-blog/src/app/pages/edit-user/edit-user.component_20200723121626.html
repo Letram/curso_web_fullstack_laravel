@@ -1,0 +1,45 @@
+<div class="py-2 row">
+  <div class="col-2 user-avatar">
+    <img [src]="identifiedUser.image_url | userImage" alt="" />
+  </div>
+  <div class="col-10 user-personal">
+    <form #userPersonalForm="ngForm"></form>
+    <div class="col-4 user-data user-name">
+      <label for="name">Username</label>
+      <input
+        type="text"
+        #name
+        name="name"
+        id="name"
+        class=""
+        [ngClass]="{
+          valid: name.touched
+        }"
+        [(ngModel)]="identifiedUser.name"
+        required
+      />
+    </div>
+    <div class="col-4 user-data user-email">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        value="{{ identifiedUser.email }}"
+      />
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="offset-2 col-8 user-description">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa mollitia
+    minima dignissimos inventore excepturi totam, voluptates, cupiditate,
+    molestias nobis nulla animi eos. Dolorem iste tempore deserunt quisquam
+    molestiae sapiente eum.
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    publicaciones
+  </div>
+</div>

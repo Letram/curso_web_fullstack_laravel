@@ -1,0 +1,10 @@
+<div class="cat-card">
+  <div class="cat-info" *ngIf="category">
+      <input type="text" #categoryName="ngModel" [(ngModel)]="category.name" name="categoryName" readonly required>
+    <p class="cat-post-count">{{ category.count }} posts</p>
+  </div>
+  <div class="ml-auto btn-container" *ngIf="category">
+    <span class="action-btn red"><i class="fa fa-times" (click)="removeCategory()"></i></span>
+    <span class="action-btn blue"><i class="fa fa-edit" (click)="updateCategory()"></i></span>
+  </div>
+</div>

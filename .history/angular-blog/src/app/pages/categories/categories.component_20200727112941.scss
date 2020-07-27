@@ -1,0 +1,36 @@
+@import "src/styles.scss";
+
+.cat-count {
+  p {
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.cat-input {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  input {
+    outline: none;
+    border: none;
+    border-bottom: 3px solid $dark-gray;
+    text-align: center;
+    transition: border-bottom 0.5s ease-in;
+    &:focus {
+      border-bottom: 3px solid $dark-yellow;
+    }
+    &.valid {
+      border-bottom: 3px solid $green;
+    }
+    &.invalid {
+      border-bottom: 3px solid $red;
+    }
+  }
+}
+.btn-cat-new {
+  border: 3px solid $dark-green;
+  background-color: $green;
+}

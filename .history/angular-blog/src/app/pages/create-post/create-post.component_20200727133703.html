@@ -1,0 +1,75 @@
+<div class="py-2 row">
+    <div class="offset-2 col-2 user-avatar">
+      <div class="img-container">
+        <img [src]="postImage_url | postImage" alt="" />
+      </div>
+      <div class="avatar-uploader">
+        <angular-file-uploader
+          [config]="afuConfig"
+          [resetUpload]="resetVar"
+          (ApiResponse)="OnImageUpload($event)"
+        ></angular-file-uploader>
+      </div>
+    </div>
+    <div class="col-6 post-details">
+      <div class="post-data post-title">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          [ngClass]="{
+            valid: title.touched && title.valid,
+            invalid: title.touched && !title.valid
+          }"
+          #title="ngModel"
+          [(ngModel)]="userName"
+          required
+        />
+      </div>
+      <div class="user-data user-email">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          [ngClass]="{
+            valid: email.touched && email.valid,
+            invalid: email.touched && !email.valid
+          }"
+          #email="ngModel"
+          [(ngModel)]="userEmail"
+          required
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-2 col-8 user-description">
+      <label for="description">Description</label>
+      <textarea
+        [froalaEditor]
+        name="description"
+        id="description"
+        cols="100"
+        rows="10"
+        #description="ngModel"
+        [(ngModel)]="userDescription"
+        >{{ userDescription }}</textarea
+      >
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn user-update-btn"
+    (click)="editUser()"
+    [disabled]="
+      !name.valid ||
+      !email.valid ||
+      (userName == identifiedUser.name &&
+        userEmail == identifiedUser.email &&
+        userDescription == identifiedUser.description)
+    "
+  >
+    Save changes
+  </button>

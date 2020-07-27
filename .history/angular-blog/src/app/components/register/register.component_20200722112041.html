@@ -1,0 +1,70 @@
+<div
+  *ngIf="status != 0"
+  class="alert m-3"
+  [ngClass]="{
+    'alert-green': status == 1,
+    'alert-red': status == -1
+  }"
+  role="alert"
+>
+  <p class="m-0 p-0" *ngIf="status==1"> Register successful!</p>
+  <p class="m-0 p-0" *ngIf="status==-1"> Register not successful!</p>
+</div>
+<div class="form-container">
+  <h2>Register</h2>
+  <form
+    #registerForm="ngForm"
+    (ngSubmit)="onSubmit(registerForm)"
+  >
+    <div>
+      <div class="form-input">
+        <label for="name">Name</label>
+        <div class="input-container">
+          <input
+            id="name"
+            name="name"
+            type="text"
+            #name="ngModel"
+            required
+            pattern=".*\S.*"
+            [(ngModel)]="userToRegister.name"
+          />
+          <small *ngIf="name.invalid && name.touched">Name is invalid</small>
+        </div>
+      </div>
+      <div class="form-input">
+        <label for="email">Email</label>
+        <div class="input-container">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            #email="ngModel"
+            required
+            [(ngModel)]="userToRegister.email"
+          />
+          <small *ngIf="email.invalid && email.touched">Email is invalid</small>
+        </div>
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <div class="input-container">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            #password="ngModel"
+            required
+            [(ngModel)]="userToRegister.password"
+          />
+          <small *ngIf="password.invalid && password.touched"
+            >Password is invalid</small
+          >
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn mx-5" [disabled]="registerForm.invalid">
+      <i class="fa fa-paper-plane"></i>
+    </button>
+  </form>
+</div>

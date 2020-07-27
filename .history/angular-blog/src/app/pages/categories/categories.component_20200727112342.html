@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-2 cat-count">
+    <p>{{ categories.length }}</p>
+  </div>
+  <div class="col-6">
+    <div *ngFor="let category of categories.sort(compare)" class="cat-card">
+      <!-- Cambiar por un componente de una categoría en singular -->
+      <app-category-entry [category]="category" ></app-category-entry>
+      <!-- ------------------------------------------------------ -->
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <div class="cat-input">
+        <label for="categoryName">Name</label>
+        <input type="text" name="categoryName" id="categoryName"
+        [ngClass]="{
+          valid: categoryName.touched && categoryName.valid,
+          invalid: categoryName.touched && !categoryName.valid
+        }"
+        #categoryName="ngModel"
+        [(ngModel)]="newCategory.name" maxlength="20" required/>
+      </div>
+      <button type="button" class="btn btn-cat-new" [disabled]="!categoryName.valid" (click)="createCategory()">Create category</button>
+    </div>
+  </div>
+</div>

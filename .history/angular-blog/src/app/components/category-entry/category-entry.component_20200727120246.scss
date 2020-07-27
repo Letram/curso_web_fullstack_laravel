@@ -1,0 +1,87 @@
+@import "src/styles.scss";
+
+.cat-card {
+  height: 5rem;
+  width: 80%;
+  margin: 0.25rem auto;
+  border: 3px solid $dark-gray;
+  padding: 1rem 0.5rem;
+  display: flex;
+
+  transition: border-color 0.5s ease-in-out, border-radius 0.25s ease-in-out,
+    background-color 0.5s ease-in-out;
+  .cat-info {
+    padding-left: 0.5rem;
+    .cat-name {
+      padding: 0;
+      margin: 0;
+      text-transform: capitalize;
+      outline: none;
+      border: none;
+      text-align: left;
+      transition: border-bottom 0.5s ease-in;
+      background-color: transparent;
+      &.enabled{
+        border-bottom: 3px solid $dark-gray;
+      }
+      &:focus {
+        border-bottom: 3px solid $dark-yellow;
+      }
+      &.valid {
+        border-bottom: 3px solid $green;
+      }
+      &.invalid {
+        border-bottom: 3px solid $red;
+      }
+    }
+    .cat-post-count {
+      font-weight: lighter;
+      font-size: 0.75rem;
+    }
+  }
+  .btn-container {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .action-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .red {
+      height: 2rem;
+      width: 2rem;
+      color: $dark-red;
+      border: 3px solid $dark-red;
+      border-radius: 50%;
+      transition: background-color 0.5s ease-in-out;
+      &:hover {
+        background-color: lighten($color: $red, $amount: 10);
+        cursor: pointer;
+      }
+    }
+    .blue {
+      height: 2rem;
+      width: 2rem;
+      color: $dark-blue;
+      border: 3px solid $dark-blue;
+      border-radius: 50%;
+
+      transition: background-color 0.5s ease-in-out;
+      i {
+        text-align: center;
+      }
+      &:hover {
+        background-color: lighten($color: $blue, $amount: 10);
+        cursor: pointer;
+      }
+    }
+  }
+  &:hover {
+    border-radius: 4rem;
+    border-color: $dark-yellow;
+    background-color: $yellow;
+  }
+}

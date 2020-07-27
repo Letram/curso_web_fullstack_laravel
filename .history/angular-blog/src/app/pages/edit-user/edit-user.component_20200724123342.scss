@@ -1,0 +1,58 @@
+@import "src/styles";
+
+.user-avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .img-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            max-width: 75%;
+            object-fit: cover;
+            height: auto;
+        }
+    }
+    .avatar-uploader{
+        margin: auto 0;
+    }
+}
+.user-personal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .user-data{
+        margin: 0.25rem 0;
+        padding: 0.25rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+        label{
+            margin: 0;
+        }
+        input{
+            outline: none;
+            border: none;
+            border-bottom: 3px solid $dark-gray;
+            transition: border-bottom 0.5s ease-in;
+            &:focus{
+                border-bottom: 3px solid $dark-yellow;
+            }
+            &.valid{
+                border-bottom: 3px solid $green;
+            }
+            &.invalid{
+                border-bottom: 3px solid $red;
+            }
+        }
+    }
+}
+
+.user-update-btn{
+    display: block;
+    margin: 0 auto;
+    background-color: $green;
+    border: 3px solid $dark-green;
+}
