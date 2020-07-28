@@ -55,7 +55,7 @@ export class CategoriesComponent implements OnInit {
       (response) => {
         console.log(response);
         this.categories = response.categories;
-        this.newCategory = new Category(0, '', 0);
+        this.newCategory = new Category(0, '');
       },
       (error) => console.error(error)
     );

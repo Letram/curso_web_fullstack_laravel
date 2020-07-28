@@ -5,15 +5,16 @@ import { CategoryService } from 'src/app/services/category.service';
 @Component({
   selector: 'app-category-entry',
   templateUrl: './category-entry.component.html',
-  styleUrls: ['./category-entry.component.scss'],
+  styleUrls: ['./category-entry.component.scss']
 })
 export class CategoryEntryComponent implements OnInit {
+
   @Input('category')
-  set category(value: Category) {
-    this.modifiedCategory = new Category(value.id, value.name, value.count);
-    this.currentCategory = new Category(value.id, value.name, value.count);
+  set category(value: Category){
+    this.modifiedCategory = new Category(value.id, value.name, value.postCount);
+    this.currentCategory =  new Category(value.id, value.name, value.postCount);
   }
-  get category() {
+  get category(){
     return this.currentCategory;
   }
 
@@ -24,28 +25,26 @@ export class CategoryEntryComponent implements OnInit {
   private modifiedCategory: Category;
   private currentCategory: Category;
   constructor(private _categoryService: CategoryService) {
-    this.editing = false;
-    this.modifiedCategory = new Category(0, '', 0);
-  }
+    this.editing=false;
+    this.modifiedCategory = new Category(0, "", 0);
+   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { 
+    console.log(this.category);
+   }
 
-  public removeCategory() {
+  public removeCategory(){
     this.onRemoveClicked.emit(this.category.id);
   }
 
-  public updateCategory() {
+  public updateCategory(){
     this.editing = !this.editing;
-    console.log({
-      edit: this.editing,
-      mod: this.modifiedCategory,
-      cur: this.currentCategory,
-    });
+    console.log({edit: this.editing, mod: this.modifiedCategory, cur: this.currentCategory});
     //user just finished editing
-    if (!this.editing && this.modifiedCategory.name == '')
+    if(!this.editing && this.modifiedCategory.name == "")
       this.modifiedCategory = this.currentCategory;
-    else if (this.modifiedCategory.name != this.currentCategory.name) {
-      this.onEditPerformed.emit(this.modifiedCategory);
-    }
+      else if(this.modifiedCategory.name != this.currentCategory.name){
+        this.onEditPerformed.emit(this.modifiedCategory);
+      }
   }
 }

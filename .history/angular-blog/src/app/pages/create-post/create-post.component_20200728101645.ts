@@ -1,4 +1,3 @@
-import { Post } from './../../models/post.model';
 import { AuthService } from './../../services/auth.service';
 import { PostService } from './../../services/post.service';
 import { global } from './../../services/global';
@@ -19,6 +18,8 @@ export class CreatePostComponent implements OnInit {
 
   public resetVar: any;
 
+  private postId = 0;
+
   public categories: Category[];
 
   //angular file uploader config
@@ -27,7 +28,7 @@ export class CreatePostComponent implements OnInit {
     formatsAllowed: '.jpg,.png,.jpeg',
     maxSize: '2',
     uploadAPI: {
-      url: `${global.url_api}/posts/upload`,
+      url: `${global.url_api}/posts/${this.postId}/image`,
       method: 'POST',
       headers: {
         Authorization: `${this._authService.getToken()}`,
@@ -55,17 +56,20 @@ export class CreatePostComponent implements OnInit {
     );
   }
 
-  public createPost() {
-    let newPost = new Post(0, this._authService.getIdentifiedUser().sub, this.postCategory, this.postTitle, this.postContent, this.postImage_url);
-    console.log(newPost);
-    this._postService.create(newPost).subscribe(
-      response => {
-        console.log(response);
-      },
-      error => console.error(error)
-    );
-  }
+  public createPost() {}
   public OnImageUpload(response) {
-    this.postImage_url = response.body.image_url;
+    console.log(response);
+    /*
+      this._userService.getUser(this.identifiedUser.sub).subscribe(
+        response => {
+          console.log(response);
+          response.user.sub = this.identifiedUser.sub
+          this._userService.persistUser({token: this._userService.getToken(), user: response.user})
+          this.setUser();
+          console.log(this.userImage_url);
+        },
+        error => console.error(error)
+      );
+      */
   }
 }

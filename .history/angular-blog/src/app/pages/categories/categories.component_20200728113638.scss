@@ -36,10 +36,8 @@
 }
 
 .btn-more{
-  display: block;
   margin: 0 auto;
   border: 3px solid $dark-blue;
-  border-radius: 3rem;
   background-color: $blue;
 }
 
@@ -47,9 +45,7 @@
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  height: 93vh;
-  border-left: 3px solid $dark-gray;
-  border-right: 3px solid $dark-gray;
+  height: 100%;
   &::-webkit-scrollbar{
     display: none;
   }

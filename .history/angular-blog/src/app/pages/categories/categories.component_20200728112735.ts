@@ -16,7 +16,7 @@ export class CategoriesComponent implements OnInit {
   public totalPages: number = 0;
 
   constructor(private _categoryService: CategoryService) {
-    this.newCategory = new Category(0, '', 0);
+    this.newCategory = new Category(0, '');
   }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class CategoriesComponent implements OnInit {
       (response) => {
         console.log(response);
         this.categories = response.categories;
-        this.newCategory = new Category(0, '', 0);
+        this.newCategory = new Category(0, '');
       },
       (error) => console.error(error)
     );

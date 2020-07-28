@@ -3,24 +3,13 @@
     <p>{{ totalCategories }}</p>
   </div>
   <div class="col-6">
-    <div class="list" (scroll)="onScroll($event)">
-      <app-category-entry
-        *ngFor="let category of categories"
-        [category]="category"
-        (onRemoveClicked)="removeCategory($event)"
-        (onEditPerformed)="updateCategory($event)"
-      >
-      </app-category-entry>
-      <!-- 
-      <button
-        *ngIf="currentPage <= totalPages"
-        class="btn btn-more"
-        (click)="getCategories()"
-      >
-        More categories
-      </button>
-       -->
-    </div>
+    <app-category-entry
+      *ngFor="let category of categories"
+      [category]="category"
+      (onRemoveClicked)="removeCategory($event)"
+      (onEditPerformed)="updateCategory($event)"
+    >
+    </app-category-entry>
   </div>
   <div class="col-4">
     <div class="d-flex flex-column justify-content-center align-items-center">

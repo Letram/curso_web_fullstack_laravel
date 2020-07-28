@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category.model';
 import { Observable } from 'rxjs';
@@ -16,38 +16,25 @@ export class CategoriesComponent implements OnInit {
   public totalPages: number = 0;
 
   constructor(private _categoryService: CategoryService) {
-    this.newCategory = new Category(0, '', 0);
+    this.newCategory = new Category(0, '');
   }
 
   ngOnInit(): void {
     this.getCategories();
   }
 
-  public getCategories() {
+  public getCategories(){
     this._categoryService.getCategories(this.currentPage).subscribe(
       (response) => {
         console.log(response);
-        this.totalPages = response.categories.last_page;
+        this.categories = this.categories.concat(response.categories.data);
         this.totalCategories = response.categories.total;
-        
-        if(this.currentPage <= this.totalPages){
-          this.categories = this.categories.concat(response.categories.data);
-          this.currentPage++;
-        }
+        this.totalPages = response.categories.last_page;
+        this.currentPage++;
+        console.log({currPage: this.currentPage, cats: this.categories});
       },
       (error) => console.error(error)
     );
-  }
-
-  @HostListener('scroll', ['$event'])
-  onScroll(event: any) {
-    // visible height + pixel scrolled >= total height
-    if (
-      event.target.offsetHeight + event.target.scrollTop >=
-      event.target.scrollHeight
-    ) {
-      this.getCategories();
-    }
   }
 
   public createCategory() {
@@ -55,7 +42,7 @@ export class CategoriesComponent implements OnInit {
       (response) => {
         console.log(response);
         this.categories = response.categories;
-        this.newCategory = new Category(0, '', 0);
+        this.newCategory = new Category(0, '');
       },
       (error) => console.error(error)
     );

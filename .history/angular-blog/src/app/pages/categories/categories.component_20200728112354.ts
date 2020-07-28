@@ -16,7 +16,7 @@ export class CategoriesComponent implements OnInit {
   public totalPages: number = 0;
 
   constructor(private _categoryService: CategoryService) {
-    this.newCategory = new Category(0, '', 0);
+    this.newCategory = new Category(0, '');
   }
 
   ngOnInit(): void {
@@ -27,13 +27,10 @@ export class CategoriesComponent implements OnInit {
     this._categoryService.getCategories(this.currentPage).subscribe(
       (response) => {
         console.log(response);
-        this.totalPages = response.categories.last_page;
+        this.categories = this.categories.concat(response.categories.data);
         this.totalCategories = response.categories.total;
-        
-        if(this.currentPage <= this.totalPages){
-          this.categories = this.categories.concat(response.categories.data);
-          this.currentPage++;
-        }
+        this.totalPages = response.categories.last_page;
+        if(this.currentPage < this.totalPages) this.currentPage++;
       },
       (error) => console.error(error)
     );
@@ -55,7 +52,7 @@ export class CategoriesComponent implements OnInit {
       (response) => {
         console.log(response);
         this.categories = response.categories;
-        this.newCategory = new Category(0, '', 0);
+        this.newCategory = new Category(0, '');
       },
       (error) => console.error(error)
     );

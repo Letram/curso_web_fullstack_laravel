@@ -57,13 +57,7 @@ export class CreatePostComponent implements OnInit {
 
   public createPost() {
     let newPost = new Post(0, this._authService.getIdentifiedUser().sub, this.postCategory, this.postTitle, this.postContent, this.postImage_url);
-    console.log(newPost);
-    this._postService.create(newPost).subscribe(
-      response => {
-        console.log(response);
-      },
-      error => console.error(error)
-    );
+    
   }
   public OnImageUpload(response) {
     this.postImage_url = response.body.image_url;

@@ -28,7 +28,9 @@ export class CategoryEntryComponent implements OnInit {
     this.modifiedCategory = new Category(0, '', 0);
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+    console.log(this.category);
+  }
 
   public removeCategory() {
     this.onRemoveClicked.emit(this.category.id);

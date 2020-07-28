@@ -10,7 +10,7 @@ export class PostImagePipe implements PipeTransform {
     if(image_url == "" || image_url == null)
       return "assets/post_default.png";
     else{
-      return `${global.url_api}/posts/download?image_url=${image_url}`;
+      return `${global.url_api}/posts/image?image_url=${image_url}`
     }
   }
 
