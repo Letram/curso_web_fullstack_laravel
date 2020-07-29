@@ -1,0 +1,12 @@
+.post-card{
+    height: 8rem;
+    .post-card-header{
+        display: flex;
+        .post-card-img{
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

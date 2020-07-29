@@ -1,4 +1,3 @@
-import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -18,10 +17,9 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesComponent },
   {
     path: 'posts',
+    component: PostsComponent,
     children: [
-      { path: '', component: PostsComponent },
       { path: 'create', component: CreatePostComponent },
-      { path: ':id', component: PostDetailsComponent },
     ],
   },
   { path: '**', component: ErrorComponent },

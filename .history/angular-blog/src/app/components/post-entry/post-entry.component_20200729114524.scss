@@ -1,0 +1,62 @@
+@import "src/styles.scss";
+
+.post-card{
+    height: 10rem;
+    display: flex;
+    margin: 0.5rem 0;
+    border: 3px solid $dark-gray;
+    position: relative;
+    .post-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+            border: 3px solid $dark-gray;
+            border-radius: 50%;
+        }
+    }
+    .post-content{
+        display: grid;
+        .post-title{
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .post-body{
+            text-align: justify;
+        }
+        .post-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-weight: lighter;
+        }
+    }
+
+    &::before{
+        content: "a";
+        position: absolute;
+        margin: 0.5rem;
+        left: -1rem;
+        top: 50%;
+        opacity: 0;
+    }
+    &::after{
+        content: "b";
+        position: absolute;
+        right: -1rem;
+        opacity: 0;
+        transition: opacity 0.25s ease-in;
+    }
+    &:hover{
+        cursor: pointer;
+        &::before{
+            opacity: 1;
+        }
+        &::after{
+            opacity: 1;
+        }
+    }
+}

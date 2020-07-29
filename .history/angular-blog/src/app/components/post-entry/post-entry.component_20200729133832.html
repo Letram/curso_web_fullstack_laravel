@@ -1,0 +1,23 @@
+<div class="row post" (click)="showPost()">
+  <div class="post-card col-10">
+    <div class="col-3 post-img">
+      <img [src]="post.image_url | postImage" alt="" />
+    </div>
+    <div class="col post-content">
+      <div class="post-title">{{ post.title }}</div>
+      <div
+        class="post-body"
+        [innerHtml]="post.content | striphtml | clamp: 150"
+      ></div>
+      <div class="post-info">
+        <div>~{{ postCategory.name }}~</div>
+        <div>by {{ creator.name }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col actions" *ngIf="currentUser.sub == post.user_id">
+      <button class="btn danger" (click)="removePost()">
+          <i class="fa fa-times"></i>
+      </button>
+  </div>
+</div>

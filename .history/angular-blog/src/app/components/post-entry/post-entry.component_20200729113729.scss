@@ -1,0 +1,32 @@
+@import "src/styles.scss";
+
+.post-card{
+    height: 10rem;
+    display: flex;
+    margin: 0.5rem 0;
+    border: 3px solid $dark-gray;
+    .post-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+            border: 3px solid $dark-gray;
+            border-radius: 50%;
+        }
+    }
+    .post-content{
+        display: grid;
+        .post-body{
+            text-align: justify;
+        }
+        .post-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-weight: lighter;
+        }
+    }
+}

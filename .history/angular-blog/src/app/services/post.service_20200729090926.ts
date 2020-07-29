@@ -16,9 +16,7 @@ export class PostService {
    */
   public getAll(page: number): Observable<any> {
     let headers = new HttpHeaders().set('content-type', 'application/json');
-    return this._http.get(`${global.url_api}/posts?page=${page}`, {
-      headers: headers,
-    });
+    return this._http.get(`${global.url_api}/posts?page=${page}`, { headers: headers });
   }
   /**
    * create a post
@@ -30,13 +28,6 @@ export class PostService {
       .set('authorization', this._auth.getToken());
 
     return this._http.post(`${global.url_api}/posts`, post, {
-      headers: headers,
-    });
-  }
-
-  remove(postId: number): Observable<any> {
-    let headers = new HttpHeaders().set('authorization', this._auth.getToken());
-    return this._http.delete(`${global.url_api}/posts/${postId}`, {
       headers: headers,
     });
   }

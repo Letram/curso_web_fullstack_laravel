@@ -1,0 +1,18 @@
+@import "src/styles.scss";
+
+.post-card{
+    height: 10rem;
+    display: flex;
+    margin: 0.5rem 0;
+    border: 3px solid $dark-gray;
+    .post-img{
+        margin: 0.5rem;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 3px solid $dark-gray;
+            border-radius: 50%;
+        }
+    }
+}

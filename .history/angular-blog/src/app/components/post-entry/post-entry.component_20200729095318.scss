@@ -1,0 +1,14 @@
+.post-card{
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    .post-card-header{
+        display: flex;
+        .post-card-img{
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

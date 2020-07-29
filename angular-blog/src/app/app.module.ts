@@ -19,6 +19,11 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryEntryComponent } from './components/category-entry/category-entry.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { PostImagePipe } from './pipes/post-image.pipe';
+import { PostsComponent } from './pages/posts/posts.component';
+import { PostEntryComponent } from './components/post-entry/post-entry.component';
+import { ClampPipe } from './pipes/clamp.pipe';
+import { StriphtmlPipe } from './pipes/striphtml.pipe';
+import { PostDetailsComponent } from './pages/post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { PostImagePipe } from './pipes/post-image.pipe';
     CategoriesComponent,
     CategoryEntryComponent,
     CreatePostComponent,
-    PostImagePipe
+    PostImagePipe,
+    PostsComponent,
+    PostEntryComponent,
+    ClampPipe,
+    StriphtmlPipe,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,

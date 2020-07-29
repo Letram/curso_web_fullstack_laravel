@@ -1,0 +1,19 @@
+@import "src/styles.scss";
+.list{
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    height: 93vh;
+    border-left: 3px solid $dark-gray;
+    border-right: 3px solid $dark-gray;
+    padding: 0.25rem;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+  }
+
+  .post-count{
+      font-size: 5rem;
+      font-weight: bold;
+      text-align: center;
+  }

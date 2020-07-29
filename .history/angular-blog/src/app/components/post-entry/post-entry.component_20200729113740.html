@@ -1,0 +1,13 @@
+<div class="row post-card">
+        <div class="col-3 post-img">
+            <img [src]="post.image_url | postImage" alt="" />
+        </div>
+        <div class="col-8 post-content">
+            <div class="post-title">{{post.title}}</div>
+            <div class="post-body"> {{post.content | clamp: 150}} </div>
+            <div class="post-info">
+                <div>-{{postCategory.name}}-</div>
+                <div>by {{creator.name}}</div>
+            </div>
+        </div>
+</div>
