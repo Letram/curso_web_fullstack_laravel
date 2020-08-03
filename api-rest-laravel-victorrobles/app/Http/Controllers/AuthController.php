@@ -23,14 +23,21 @@ class AuthController extends Controller
         $userData = $request->validated();
 
         //If User data is correct we can just create the user and return to user.index
-        User::create([
+        $user = User::create([
             "name"=>$userData["name"],
             "email"=>$userData["email"],
             "password"=>hash("sha256", $userData["password"]),
         ]);
 
-        return redirect(route("users.index"));
-    }
+        return response()->json(
+            [
+                "status" => 1,
+                "code" => 200,
+                "user" => $user
+            ],
+            200,
+            ["Content-Type" => "Application/json"]
+        );    }
 
     /**
      * Method used to login. It can return a token in a string or an object fo the user
@@ -49,8 +56,12 @@ class AuthController extends Controller
 
         $auth = new JwtAuth();
 
-        return response()->json(
-            $auth->signup($data["email"], hash("sha256", $data["password"]),  $wantsToken),
+        return response()->json([
+          "status" => 1,
+          "code" => 200,
+          "token" => $auth->signup($data["email"], hash("sha256", $data["password"]),  true),
+          "user" => $auth->signup($data["email"], hash("sha256", $data["password"]),  null)
+        ],
             200,
             ["Content-Type" => "Application/json"]
         );

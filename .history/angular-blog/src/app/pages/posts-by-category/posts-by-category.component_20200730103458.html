@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col col-3 post-count">{{posts-length}}</div>
+    <div class="col">
+        <div class="list">
+            <app-post-entry *ngFor="let post of posts" [post]="post" (onRemoveClicked)="onRemoveClicked($event)"></app-post-entry>
+        </div>
+    </div>
+</div>

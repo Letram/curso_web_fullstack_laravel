@@ -22,7 +22,7 @@ class Category extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function posts(){
-        return $this->hasMany("App\Post");
+        return $this->hasMany("App\Post")->with(["category", "user"]);
         //return $this->hasMany("App\Post", "category_id", "id");
     }
 }

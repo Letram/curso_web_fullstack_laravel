@@ -24,6 +24,7 @@ import { PostEntryComponent } from './components/post-entry/post-entry.component
 import { ClampPipe } from './pipes/clamp.pipe';
 import { StriphtmlPipe } from './pipes/striphtml.pipe';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
+import { PostsByCategoryComponent } from './pages/posts-by-category/posts-by-category.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PostDetailsComponent } from './pages/post-details/post-details.componen
     PostEntryComponent,
     ClampPipe,
     StriphtmlPipe,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PostsByCategoryComponent
   ],
   imports: [
     BrowserModule,

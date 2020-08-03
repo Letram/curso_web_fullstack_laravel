@@ -1,0 +1,23 @@
+<div class="py-2 row">
+  <div class="offset-2 col-2 user-avatar">
+    <div class="img-container">
+      <img [src]="post.image_url | postImage" alt="" />
+    </div>
+  </div>
+  <div class="col-6 post-details">
+    <div class="post-data post-title">
+      <label for="title">Title</label>
+      <p id="title">{{ post.title }}</p>
+    </div>
+    <div class="post-data post-category">
+      <label for="category">Category</label>
+      <p id="category">{{ post.category.name }}</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="offset-2 col-8 post-content">
+    <label for="body">by {{post.user.name}}</label>
+    <div [innerHtml]="post.content" id="body"></div>
+  </div>
+</div>

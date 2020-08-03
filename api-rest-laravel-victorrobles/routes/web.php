@@ -63,18 +63,21 @@ Route::model('post', \App\Post::class, function (){
     );
 });
 
-Route::resources([
-    'api/categories' => 'CategoryController',
-    'api/posts' => 'PostController',
-    'api/users' => 'UserController',
-]);
-
 Route::post('api/users/{user}/image', "UserController@uploadImage")->name("users.uploadImage");
 Route::get('api/users/{user}/image', "UserController@getImage")->name("users.getImage");
 
 Route::get('api/categories/{category}/posts', "CategoryController@GetPosts")->name("category.posts");
 
+Route::get('api/posts/random', "PostController@getRandom")->name("posts.random");
 Route::get('api/posts/category/{category}', "PostController@getPostsByCategory")->name("posts.byCategory");
 Route::get('api/posts/user/{user}', "PostController@getPostsByUser")->name("posts.byUser");
 Route::post('api/posts/{post}/image', "PostController@uploadImage")->name("posts.uploadImage");
+Route::post('api/posts/upload', "PostController@uploadImage2")->name("posts.uploadImage2");
+Route::get('api/posts/download', "PostController@getImage2")->name("posts.getImage2");
 Route::get('api/posts/{post}/image', "PostController@getImage")->name("posts.getImage");
+
+Route::resources([
+    'api/categories' => 'CategoryController',
+    'api/posts' => 'PostController',
+    'api/users' => 'UserController',
+]);

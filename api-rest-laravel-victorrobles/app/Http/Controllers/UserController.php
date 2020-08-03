@@ -118,17 +118,19 @@ class UserController extends Controller
         //2.- Check if the user that is being updated is the one logged in
         if ($user->id == $decodedToken->sub) {
             $userData = $request->validated();
-            if ($request->hasFile("image_file")) {
-                $extension = $request->image_file->extension();
-                $userData["image_url"] = $request->image_file->storeAs('/public', "$user->id-avatar".".".$extension);
-                unset($userData["image_file"]);
+            //the property file0 is the name of the file we upload using angular-file-uploader
+            if ($request->hasFile("file0")) {
+                $extension = $request->file0->extension();
+                $userData["image_url"] = $request->file0->storeAs('/public', "$user->id-avatar".".".$extension);
+                unset($userData["file0"]);
             }
             $user->update($userData);
 
             return new JsonResponse([
                 "code" => 200,
                 "status" => 1,
-                "updated_user" => $user
+                "updated_user" => $user,
+                "files" => $request->files->keys()
             ], 200, ["Content-Type" => "Application/json"]);
         }else{
             throw new HttpResponseException(

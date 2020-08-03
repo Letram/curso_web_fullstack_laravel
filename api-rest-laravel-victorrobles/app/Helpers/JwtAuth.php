@@ -33,6 +33,7 @@ class JwtAuth{
              * sub = user id,
              * email = user email
              * name = user name
+             * description = user description
              * iat = creation date
              * exp = expiration date (the token will last 7 days -> in seconds (7 days * 24 hours per day * 3600 seconds per hour))
              */
@@ -41,6 +42,7 @@ class JwtAuth{
                 "email" => $user->email,
                 "name" => $user->name,
                 "image_url" => $user->image_url,
+                "description" => $user->description,
                 "iat" => time(),
                 "exp" => time() + 7*24*3600
             );

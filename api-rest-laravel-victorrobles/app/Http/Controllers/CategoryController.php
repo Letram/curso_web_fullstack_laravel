@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Requests\UpdateImageUserRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Psy\Util\Json;
 
 class CategoryController extends Controller
@@ -23,34 +24,57 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has("page") && $request->page != 0)
+            $data = DB::table('categories')
+                ->select('categories.id', 'categories.name', DB::raw('count(posts.category_id) count'))
+                ->leftJoin('posts', 'categories.id', '=', 'posts.category_id')
+                ->groupBy('categories.id')
+                ->orderBy('name')
+                ->paginate(15);
+        else
+            $data = DB::table('categories')
+                ->select('categories.id', 'categories.name', DB::raw('count(posts.category_id) count'))
+                ->leftJoin('posts', 'categories.id', '=', 'posts.category_id')
+                ->groupBy('categories.id')
+                ->orderBy('name')
+                ->get();
         return new JsonResponse([
             "status" => 1,
             "code" => 200,
-            "categories" => Category::all()
+            //"categories" => Category::all()
+            "categories" => $data
         ], 200, ["Content-type" => "Application/json"]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\CreateCategoryRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(CreateCategoryRequest $request)
     {
         $categoryData = $request->validated();
-        $newCategory = (new \App\Category)->create([
+        $newCategory = (new Category)->create([
             "name" => $categoryData["name"]
         ]);
+
+        $data = DB::table('categories')
+            ->select('categories.id', 'categories.name', DB::raw('count(posts.category_id) count'))
+            ->leftJoin('posts', 'categories.id', '=', 'posts.category_id')
+            ->groupBy('categories.id')
+            ->get();
 
         return new JsonResponse([
             "status" => 1,
             "code" => 200,
-            "category" => $newCategory
+            "category" => $newCategory,
+            "categories" => $data
         ], 200, ["Content-type" => "application/json"]);
 
         //We could just return the list of categories that has the new one in it.
@@ -100,7 +124,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return new JsonResponse([
+            "status" => 1,
+            "code" => 200,
+            "category" => $category,
+            "categories" => Category::all()
+        ], 200, [
+            "Content-type" => "application/json"
+        ]);
     }
 
     /**
@@ -108,6 +140,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function GetPosts(Category $category){
-        return response()->json($category->posts);
+        $data = $category->posts;
+
+        return response()->json($data);
+        //return response()->json($category->posts);
     }
 }
